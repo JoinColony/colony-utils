@@ -103,6 +103,27 @@ var fromDecimal = function fromDecimal (value) {
     return number.lessThan(0) ? '-0x' + result.substr(1) : '0x' + result;
 };
 
+/**
+ * Should be called to get hex representation (prefixed by 0x) of utf8 string
+ *
+ * @method fromUtf8
+ * @param {String} string
+ * @param {Number} optional padding
+ * @returns {String} hex representation of input string
+ */
+var fromUtf8 = function fromUtf8 (str) {
+    str = utf8.encode(str);
+    var hex = "";
+    for(var i = 0; i < str.length; i++) {
+        var code = str.charCodeAt(i);
+        if (code === 0)
+            break;
+        var n = code.toString(16);
+        hex += n.length < 2 ? '0' + n : n;
+    }
+
+    return "0x" + hex;
+};
 
 /**
  * Should be called to get hex representation (prefixed by 0x) of ascii string
@@ -112,7 +133,7 @@ var fromDecimal = function fromDecimal (value) {
  * @param {Number} optional padding
  * @returns {String} hex representation of input string
  */
-var fromAscii = function(str) {
+var fromAscii = function fromAscii (str) {
     var hex = "";
     for(var i = 0; i < str.length; i++) {
         var code = str.charCodeAt(i);
@@ -154,7 +175,7 @@ var isString = function isString (object) {
  * @param {Object}
  * @return {Boolean}
  */
-var isBoolean = function (object) {
+var isBoolean = function isBoolean (object) {
     return typeof object === 'boolean';
 };
 
@@ -165,7 +186,7 @@ var isBoolean = function (object) {
  * @param {Object}
  * @return {Boolean}
  */
-var isObject = function (object) {
+var isObject = function isObject (object) {
     return typeof object === 'object';
 };
 
@@ -174,8 +195,8 @@ module.exports = {
     sha3: sha3,
     toHex: toHex,
     toBigNumber: toBigNumber,
-    fromUtf8: fromUtf8,
     fromAscii: fromAscii,
+    fromUtf8: fromUtf8,
     fromDecimal: fromDecimal
 };
 
