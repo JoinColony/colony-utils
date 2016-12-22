@@ -90,6 +90,17 @@ var toBigNumber = function toBigNumber (number) {
 };
 
 /**
+ * Converts value to it's decimal representation in string
+ *
+ * @method toDecimal
+ * @param {String|Number|BigNumber}
+ * @return {String}
+ */
+var toDecimal = function toDecimal (value) {
+    return toBigNumber(value).toNumber();
+};
+
+/**
  * Converts value to it's hex representation
  *
  * @method fromDecimal
@@ -195,8 +206,8 @@ module.exports = {
     sha3: sha3,
     toHex: toHex,
     toBigNumber: toBigNumber,
+    toDecimal: toDecimal,
     fromAscii: fromAscii,
     fromUtf8: fromUtf8,
     fromDecimal: fromDecimal
 };
-
