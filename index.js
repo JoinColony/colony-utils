@@ -1,4 +1,4 @@
-var CryptoJS = require('crypto-js');
+var encHex = require('crypto-js/enc-hex');
 var sha3Crypto = require('crypto-js/sha3');
 var leftPad = require('left-pad');
 var BigNumber = require('bignumber.js');
@@ -29,7 +29,7 @@ var sha3 = function sha3 (value, options) {
         if (value.length > 2 && value.substr(0, 2) === '0x') {
             value = value.substr(2);
         }
-        value = CryptoJS.enc.Hex.parse(value);
+        value = encHex.parse(value);
     }
 
     return sha3Crypto(value, {
