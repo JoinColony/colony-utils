@@ -1,6 +1,6 @@
 {
   "name": "colony-utils",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Utilities that we need across environments",
   "main": "index.js",
   "scripts": {
